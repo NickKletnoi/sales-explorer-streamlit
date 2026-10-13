@@ -1,8 +1,9 @@
-﻿# Sales Explorer (Streamlit)
+# Sales Explorer (Streamlit)
 
 A small Streamlit dashboard with sidebar filters, summary metrics,
-a line chart, a data table, and CSV download. It generates its own
-sample data, so it runs with no setup beyond installing dependencies.
+a line chart, a data table, and CSV download. It loads sales data from
+`sales_explorer_source.csv` in the repository root. The Data tab’s
+download button exports the rows matching the current filters.
 
 ## Run locally
 

@@ -1,4 +1,5 @@
-﻿import numpy as np
+from pathlib import Path
+
 import pandas as pd
 import streamlit as st
 
@@ -7,18 +8,9 @@ st.set_page_config(page_title="Sales Explorer", layout="wide")
 
 @st.cache_data
 def load_data() -> pd.DataFrame:
-    """Build sample data once; cached so reruns are instant."""
-    rng = np.random.default_rng(42)
-    dates = pd.date_range("2026-01-01", periods=180)
-    frames = []
-    for region, base in [("East", 1000), ("West", 1200), ("South", 800)]:
-        frames.append(pd.DataFrame({
-            "date": dates,
-            "region": region,
-            "revenue": rng.normal(base, 150, len(dates)).round(2),
-        }))
-    return pd.concat(frames, ignore_index=True)
-
+    """Load the checked-in sales dataset."""
+    csv_path = Path(__file__).parent / "sales_explorer_source.csv"
+    return pd.read_csv(csv_path, parse_dates=["date"])
 
 df = load_data()
 
