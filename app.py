@@ -19,6 +19,7 @@ df = load_data()
 st.title("Sales Explorer")
 
 # --- Sidebar filters ---
+st.sidebar.caption("build: 2026-10-14 a")
 st.sidebar.header("Filters")
 regions = st.sidebar.multiselect(
     "Region",
